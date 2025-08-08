@@ -7,12 +7,27 @@ function addPenEffect() {
 
   allSquares.forEach((square) => {
     square.addEventListener("mouseenter", () => {
-      square.style.backgroundColor = "#fb8500";
+      square.style.backgroundColor = genRandomColor();
     });
     square.addEventListener("mouseleave", () => {
-      square.style.backgroundColor = "#219ebc";
+      square.style.backgroundColor = genRandomColor();
     });
   });
+}
+
+function genRandomColor() {
+  let red = getRandomInt(0, 255);
+  let green = getRandomInt(0, 55);
+  let blue = getRandomInt(0, 255);
+  let opacity = Math.random(0, 1);
+  return `rgba(${red},${green},${blue},${opacity})`;
+}
+
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  // The maximum is inclusive and the minimum is inclusive
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 let sizeButton = document.querySelector("button");
